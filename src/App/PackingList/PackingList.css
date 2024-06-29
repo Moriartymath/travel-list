@@ -1,0 +1,13 @@
+.item--list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  column-gap: 1.3em;
+}
+
+.main {
+  width: 100%;
+  padding-left: 3em;
+  padding-right: 3em;
+  height: 50%;
+}
