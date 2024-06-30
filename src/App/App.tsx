@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Logo from "./Logo/Logo.tsx";
 import PackingList from "./PackingList/PackingList.tsx";
 import Stats from "./Stats/Stats.tsx";

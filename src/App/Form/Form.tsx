@@ -4,7 +4,6 @@ function Form() {
   const [amount, setAmount] = useState(1);
   const [itemName, setItemName] = useState("");
 
-  console.log(itemName);
   return (
     <form className="form">
       <p className="question">What do you need for your 🥰 trip?</p>
