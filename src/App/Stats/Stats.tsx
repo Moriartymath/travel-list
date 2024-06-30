@@ -1,11 +1,18 @@
 import "./Stats.css";
 import PackItemType from "../PackingList/PackItem/PackItemType";
 
-function Stats({ items }) {
+type StatsProps = {
+  items: Array<PackItemType>;
+};
+
+function Stats({ items }: StatsProps) {
+  const packedPercentage =
+    (items.filter((item) => item.packed).length * 100) / items.length;
   return (
     <p className="stats">
       You have {items.length} on your list, and you already packed{" "}
-      {items.filter((item: PackItemType) => item.packed).length}
+      {items.filter((item: PackItemType) => item.packed).length} (
+      <span>{packedPercentage}%</span>)
     </p>
   );
 }
