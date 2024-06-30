@@ -1,3 +1,8 @@
+.logo {
+  background: rgb(232, 164, 68);
+  padding: 2em;
+}
+
 .logo--text {
   font-size: 3em;
   letter-spacing: 0.4em;
