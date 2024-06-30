@@ -1,5 +1,10 @@
+import { useState } from "react";
 import "./Form.css";
 function Form() {
+  const [amount, setAmount] = useState(1);
+  const [itemName, setItemName] = useState("");
+
+  console.log(itemName);
   return (
     <form className="form">
       <p className="question">What do you need for your 🥰 trip?</p>
@@ -7,10 +12,16 @@ function Form() {
         type="number"
         min={1}
         step={1}
-        defaultValue={1}
+        value={amount}
         className="input input--count"
+        onChange={(ev) => setAmount(+ev.target.value)}
       />
-      <input type="text" placeholder="Item..." />
+      <input
+        type="text"
+        placeholder="Item..."
+        value={itemName}
+        onChange={(ev) => setItemName(ev.target.value)}
+      />
       <button>ADD</button>
     </form>
   );
