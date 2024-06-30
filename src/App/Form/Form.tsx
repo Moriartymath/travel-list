@@ -20,9 +20,10 @@ function Form() {
         type="text"
         placeholder="Item..."
         value={itemName}
+        className="input input--text"
         onChange={(ev) => setItemName(ev.target.value)}
       />
-      <button>ADD</button>
+      <button className="submit--button">ADD</button>
     </form>
   );
 }

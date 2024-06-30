@@ -4,4 +4,21 @@
   align-items: center;
   justify-content: space-between;
   width: fit-content;
+  color: white;
+  column-gap: 0.6em;
+  font-size: 1.3em;
+}
+
+.delete {
+  border-width: 0;
+  background: transparent;
+  color: red;
+  font-size: 1.1em;
+}
+
+.delete:active {
+  transform: scale(0.9);
+}
+.checkbox {
+  transform: scale(1.3);
 }

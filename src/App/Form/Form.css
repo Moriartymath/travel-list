@@ -1,4 +1,29 @@
 .form {
   padding: 1em;
   background: rgb(215, 124, 55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5em;
+}
+
+.question {
+  font-size: 1.2em;
+}
+
+.input,
+.submit--button {
+  border-radius: 2em;
+  border: 0;
+}
+.input {
+  padding: 0.7em 1em 0.7em 2em;
+}
+.submit--button {
+  padding: 0.7em 1em;
+  background: rgb(135, 198, 175);
+}
+
+.input--count {
+  width: 7em;
 }

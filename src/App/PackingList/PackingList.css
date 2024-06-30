@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  column-gap: 1.3em;
+  column-gap: 8em;
+  row-gap: 3em;
 }
 
 .main {
+  padding: 2em 6em;
+  background: rgb(83, 62, 43);
+  height: 100%;
   width: 100%;
-  padding-left: 3em;
-  padding-right: 3em;
-  height: 50%;
 }

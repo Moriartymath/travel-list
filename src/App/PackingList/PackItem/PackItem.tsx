@@ -1,18 +1,30 @@
 import "./PackItem.css";
+import PackItemType from "./PackItemType";
 
 type PackItemProps = {
-  itemName: string;
-  itemCount: number;
+  item: {
+    itemName: string;
+    itemCount: number;
+  };
+  setItems: Function;
 };
 
-function PackItem({ itemName, itemCount }: PackItemProps) {
+function PackItem({ item, setItems }: PackItemProps) {
   return (
     <li className="item">
-      <input type="checkbox" id="checkbox" />
-      <p>
-        <span>{itemCount}</span>
-        {itemName}
-      </p>
+      <input type="checkbox" id="checkbox" className="checkbox" />
+      <span>{item.itemCount}</span>
+      <p>{item.itemName}</p>
+      <button
+        className="delete"
+        onClick={() =>
+          setItems((currItems: Array<PackItemType>) =>
+            currItems.filter((currItem) => currItem !== item)
+          )
+        }
+      >
+        &#x2715;
+      </button>
     </li>
   );
 }

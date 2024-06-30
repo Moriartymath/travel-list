@@ -1,11 +1,16 @@
-.header-info {
+.header-info,
+.main-info,
+.footer-info {
   width: 100%;
+}
+.main-info {
+  height: 72%;
 }
 
 .footer-info {
-  width: 100%;
   text-align: center;
   background: rgb(135, 198, 175);
   font-size: 1.5em;
   padding: 1em;
+  height: 10%;
 }
