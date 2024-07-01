@@ -13,7 +13,13 @@ function Stats({ items }: StatsProps) {
     <p className="stats">
       You have {items.length} on your list, and you already packed{" "}
       {items.filter((item: PackItemType) => item.packed).length} (
-      <span>{packedPercentage}%</span>)
+      <span>
+        {Intl.NumberFormat("en-GB", { maximumFractionDigits: 1 }).format(
+          packedPercentage
+        )}
+        %
+      </span>
+      )
     </p>
   );
 }

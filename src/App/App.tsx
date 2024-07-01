@@ -14,10 +14,7 @@ const sortMethods = {
 };
 
 function App() {
-  const [items, setItems] = useState([
-    { itemName: "socks", itemCount: 2, packed: false },
-    { itemName: "laptop", itemCount: 1, packed: false },
-  ]);
+  const [items, setItems] = useState([]);
   const [sortMethod, setSortMethod] = useState(null);
 
   return (

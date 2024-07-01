@@ -25,7 +25,7 @@ function PackItem({ item, setItems }: PackItemProps) {
       });
     }
     isInitialRender.current = false;
-  }, [packed, setItems, item]);
+  }, [packed, setItems]);
 
   return (
     <li className={`item${packed ? " packed" : ""}`}>
