@@ -3,16 +3,12 @@ import "./PackItem.css";
 import PackItemType from "./PackItemType";
 
 type PackItemProps = {
-  item: {
-    itemName: string;
-    itemCount: number;
-    packed: boolean;
-  };
+  item: PackItemType;
   setItems: Function;
 };
 
 function PackItem({ item, setItems }: PackItemProps) {
-  const [packed, setPacked] = useState(false);
+  const [packed, setPacked] = useState(item.packed);
   const isInitialRender = useRef(true);
 
   useEffect(() => {
@@ -20,7 +16,7 @@ function PackItem({ item, setItems }: PackItemProps) {
       setItems((items: Array<PackItemType>) => {
         const copy = items.slice();
         const itemIndex = copy.findIndex((itm) => itm === item);
-        copy.splice(itemIndex, 1, { ...item, packed: !item.packed });
+        copy.splice(itemIndex, 1, { ...item, packed });
         return copy;
       });
     }

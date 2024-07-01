@@ -12,6 +12,7 @@ type SortItemsProps = {
 
 function SortItems({ sortMethods, setSortMethod }: SortItemsProps) {
   const handlerSelect = function (ev) {
+    ev.target.blur();
     const sortMethod: string = ev.target.value.toLowerCase();
 
     if (sortMethod.includes(sortMethods.description))

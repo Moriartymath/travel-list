@@ -18,7 +18,12 @@ function Form({ setItems }) {
         ev.preventDefault();
         setItems((currItems: Array<PackItemType>) => [
           ...currItems,
-          { itemName, itemCount, packed: false },
+          {
+            itemName,
+            itemCount,
+            packed: false,
+            id: currItems.length ? currItems.at(-1).id + 1 : 0,
+          },
         ]);
       }}
     >
