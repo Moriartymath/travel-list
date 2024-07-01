@@ -7,6 +7,7 @@ type StatsProps = {
 
 function Stats({ items }: StatsProps) {
   const packedPercentage =
+    items.length &&
     (items.filter((item) => item.packed).length * 100) / items.length;
   return (
     <p className="stats">
