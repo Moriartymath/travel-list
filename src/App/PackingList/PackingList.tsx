@@ -4,14 +4,22 @@ import PackItemType from "./PackItem/PackItemType";
 
 type PackingListProps = {
   items: Array<PackItemType>;
+  setItems: Function;
+  sortMethod: Function;
 };
 
-function PackingList({ items, setItems }) {
+function PackingList({ items, setItems, sortMethod }) {
+  const copy = items.slice();
+  const sortedItems = sortMethod ? copy.sort(sortMethod) : copy;
+  items.map((item: PackItemType, index: number) => (
+    <PackItem item={item} setItems={setItems} key={index} />
+  ));
+
   return (
     <div className="main">
       <ul className="item--list">
-        {items.map((item: PackItemType) => (
-          <PackItem item={item} setItems={setItems} />
+        {sortedItems.map((item: PackItemType, index: number) => (
+          <PackItem item={item} setItems={setItems} key={index} />
         ))}
       </ul>
     </div>

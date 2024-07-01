@@ -14,7 +14,6 @@ type PackItemProps = {
 function PackItem({ item, setItems }: PackItemProps) {
   const [packed, setPacked] = useState(false);
   const isInitialRender = useRef(true);
-  console.log(isInitialRender);
 
   useEffect(() => {
     if (!isInitialRender.current) {
@@ -26,13 +25,12 @@ function PackItem({ item, setItems }: PackItemProps) {
       });
     }
     isInitialRender.current = false;
-  }, [packed, setItems]);
+  }, [packed, setItems, item]);
 
   return (
     <li className={`item${packed ? " packed" : ""}`}>
       <input
         type="checkbox"
-        id="checkbox"
         className="checkbox"
         checked={packed}
         onChange={(ev) => setPacked((isPacked) => !isPacked)}

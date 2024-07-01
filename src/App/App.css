@@ -5,12 +5,34 @@
 }
 .main-info {
   height: 72%;
+  background: rgb(83, 62, 43);
 }
 
 .footer-info {
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgb(135, 198, 175);
   font-size: 1.5em;
   padding: 1em;
   height: 10%;
+}
+
+.items--settings {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  height: fit-content;
+  column-gap: 2em;
+}
+.items--settings * {
+  font-size: 1em;
+  height: 100%;
+  padding: 0.5em 1em;
+  border-radius: 2em;
+  background-color: bisque;
+  border-width: 0;
+  text-transform: uppercase;
 }
