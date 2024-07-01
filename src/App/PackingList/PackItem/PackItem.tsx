@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./PackItem.css";
 import PackItemType from "./PackItemType";
 
@@ -13,13 +13,19 @@ type PackItemProps = {
 
 function PackItem({ item, setItems }: PackItemProps) {
   const [packed, setPacked] = useState(false);
+  const isInitialRender = useRef(true);
+  console.log(isInitialRender);
+
   useEffect(() => {
-    setItems((items: Array<PackItemType>) => {
-      const copy = items.slice();
-      const itemIndex = copy.findIndex((itm) => itm === item);
-      copy.splice(itemIndex, 1, { ...item, packed: !item.packed });
-      return copy;
-    });
+    if (!isInitialRender.current) {
+      setItems((items: Array<PackItemType>) => {
+        const copy = items.slice();
+        const itemIndex = copy.findIndex((itm) => itm === item);
+        copy.splice(itemIndex, 1, { ...item, packed: !item.packed });
+        return copy;
+      });
+    }
+    isInitialRender.current = false;
   }, [packed, setItems]);
 
   return (

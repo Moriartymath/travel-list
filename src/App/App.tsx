@@ -7,15 +7,15 @@ import Form from "./Form/Form.tsx";
 
 function App() {
   const [items, setItems] = useState([
-    { itemName: "socks", itemCount: 2, packed: true },
-    { itemName: "laptop", itemCount: 1, packed: true },
+    { itemName: "socks", itemCount: 2, packed: false },
+    { itemName: "laptop", itemCount: 1, packed: false },
   ]);
 
   return (
     <>
       <header className="header-info">
         <Logo />
-        <Form />
+        <Form setItems={setItems} />
       </header>
       <main className="main-info">
         <PackingList items={items} setItems={setItems} />

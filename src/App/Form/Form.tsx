@@ -1,19 +1,35 @@
 import { useState } from "react";
 import "./Form.css";
-function Form() {
-  const [amount, setAmount] = useState(1);
+import PackItemType from "../PackingList/PackItem/PackItemType";
+
+type FormProps = {
+  items: Array<PackItemType>;
+  setItems: Function;
+};
+
+function Form({ setItems }) {
+  const [itemCount, setItemCount] = useState(1);
   const [itemName, setItemName] = useState("");
 
   return (
-    <form className="form">
+    <form
+      className="form"
+      onSubmit={(ev) => {
+        ev.preventDefault();
+        setItems((currItems: Array<PackItemType>) => [
+          ...currItems,
+          { itemName, itemCount, packed: false },
+        ]);
+      }}
+    >
       <p className="question">What do you need for your 🥰 trip?</p>
       <input
         type="number"
         min={1}
         step={1}
-        value={amount}
+        value={itemCount}
         className="input input--count"
-        onChange={(ev) => setAmount(+ev.target.value)}
+        onChange={(ev) => setItemCount(+ev.target.value)}
       />
       <input
         type="text"
