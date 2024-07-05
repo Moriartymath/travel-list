@@ -15,7 +15,7 @@ function PackingList({ items, setItems, sortMethod }) {
   return (
     <div className="main">
       <ul className="item--list">
-        {sortedItems.map((item: PackItemType, index: number) => (
+        {sortedItems.map((item: PackItemType) => (
           <PackItem item={item} setItems={setItems} key={item.id} />
         ))}
       </ul>

@@ -1,5 +1,6 @@
 import "./SortItems.css";
 import PackItemType from "../PackingList/PackItem/PackItemType";
+import { useEffect, useRef, useState } from "react";
 
 type SortItemsProps = {
   setSortMethod: Function;
@@ -11,31 +12,37 @@ type SortItemsProps = {
 };
 
 function SortItems({ sortMethods, setSortMethod }: SortItemsProps) {
-  const handlerSelect = function (ev) {
-    ev.target.blur();
-    const sortMethod: string = ev.target.value.toLowerCase();
+  const [sortOption, setSortOption] = useState(sortMethods.inputOrder);
+  const isFirstRendering = useRef(true);
+  useEffect(() => {
+    if (!isFirstRendering.current) {
+      if (sortOption === sortMethods.inputOrder) setSortMethod(null);
+      else if (sortOption === sortMethods.description)
+        setSortMethod(
+          () => (prevItem: PackItemType, nextItem: PackItemType) =>
+            nextItem.itemName.length - prevItem.itemName.length
+        );
+      else if (sortOption === sortMethods.packedStatus)
+        setSortMethod(
+          () => (prevItem: PackItemType, nextItem: PackItemType) =>
+            Number(prevItem.packed) - Number(nextItem.packed)
+        );
+    }
+    isFirstRendering.current = false;
+  }, [sortOption]);
 
-    if (sortMethod.includes(sortMethods.description))
-      setSortMethod(
-        () => (prevItem: PackItemType, nextItem: PackItemType) =>
-          nextItem.itemName.length - prevItem.itemName.length
-      );
-    else if (sortMethod.includes(sortMethods.inputOrder)) setSortMethod(null);
-    else if (sortMethod.includes(sortMethods.packedStatus))
-      setSortMethod(
-        () => (prevItem: PackItemType, nextItem: PackItemType) =>
-          Number(prevItem.packed) - Number(nextItem.packed)
-      );
-  };
   return (
     <select
       id="sortOptions"
-      defaultValue={`Sort by input order`}
-      onChange={handlerSelect}
+      value={sortOption}
+      onChange={(ev) => {
+        ev.target.blur();
+        setSortOption(ev.target.value);
+      }}
     >
-      <option value="Sort by packed status">Sort by packed status</option>
-      <option value="Sort by description">Sort by description</option>
-      <option value="Sort by input order">Sort by input order</option>
+      <option value={sortMethods.inputOrder}>Sort by input order</option>
+      <option value={sortMethods.description}>Sort by description</option>
+      <option value={sortMethods.packedStatus}>Sort by packed status</option>
     </select>
   );
 }
